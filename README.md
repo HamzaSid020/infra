@@ -1,9 +1,10 @@
-# Infrastructure Repository
+# Infrastructure Repository  
 
-This repository contains the Infrastructure as Code (IaC) for our project, using Terraform for resource provisioning and Kubernetes for container orchestration.
+This repository contains the Infrastructure as Code (IaC) for our project, using **Terraform** for resource provisioning and **Kubernetes** for container orchestration.  
 
-## Repository Structure
+## Repository Structure  
 
+```plaintext
 infra/
 │── terraform/
 │   ├── main.tf
@@ -16,47 +17,66 @@ infra/
 │   ├── api-gateway.yaml
 │── .github/workflows/
 │── README.md
+```
 
+## Terraform  
 
-## Terraform
+The `terraform/` directory contains Terraform configurations for provisioning and managing cloud resources.  
 
-The `terraform/` directory contains Terraform configurations for provisioning and managing cloud resources.
+- **`main.tf`** – Main Terraform configuration file  
+- **`variables.tf`** – Input variables for the Terraform modules  
+- **`outputs.tf`** – Output values from the Terraform execution  
 
-- `main.tf`: Main Terraform configuration file
-- `variables.tf`: Input variables for the Terraform modules
-- `outputs.tf`: Output values from the Terraform execution
+## Kubernetes  
 
-## Kubernetes
+The `k8s/` directory contains Kubernetes manifests for deploying our microservices.  
 
-The `k8s/` directory contains Kubernetes manifests for deploying our microservices.
+- **`auth-deployment.yaml`** – Authentication service deployment  
+- **`product-deployment.yaml`** – Product service deployment  
+- **`order-deployment.yaml`** – Order service deployment  
+- **`api-gateway.yaml`** – API Gateway configuration  
 
-- `auth-deployment.yaml`: Authentication service deployment
-- `product-deployment.yaml`: Product service deployment
-- `order-deployment.yaml`: Order service deployment
-- `api-gateway.yaml`: API Gateway configuration
+## GitHub Actions  
 
-## GitHub Actions
+The `.github/workflows/` directory contains CI/CD pipelines for automating infrastructure deployments.  
 
-The `.github/workflows/` directory contains CI/CD pipelines for automating infrastructure deployments.
+## Usage  
 
-## Usage
+1. Clone this repository:  
+   ```sh
+   git clone <repository-url>
+   cd infra
+   ```
+2. Navigate to the `terraform/` directory:  
+   ```sh
+   cd terraform
+   ```
+3. Initialize Terraform:  
+   ```sh
+   terraform init
+   ```
+4. Plan your changes:  
+   ```sh
+   terraform plan
+   ```
+5. Apply the changes:  
+   ```sh
+   terraform apply
+   ```
+6. Deploy Kubernetes manifests:  
+   ```sh
+   kubectl apply -f k8s/
+   ```
 
-1. Clone this repository
-2. Navigate to the `terraform/` directory
-3. Initialize Terraform: `terraform init`
-4. Plan your changes: `terraform plan`
-5. Apply the changes: `terraform apply`
+## Best Practices  
 
-For Kubernetes deployments, use `kubectl apply -f k8s/`
+- Use **Terraform modules** to organize and reuse code.  
+- Implement **proper naming conventions and tagging** for resources.  
+- Separate **core infrastructure** from **application-specific** resources.  
+- Use **remote state** (e.g., S3 + DynamoDB for Terraform state locking).  
+- Follow **least privilege access** principles for security.  
+- Use **Git version control** for all infrastructure changes.  
 
-## Best Practices
-
-- Use modules to organize and reuse Terraform code
-- Implement proper naming conventions and tagging for resources
-- Separate core infrastructure from application-specific resources
-- Use version control for all infrastructure changes
-- Implement proper security measures, such as least privilege access
-
-## Contributing
+## Contributing  
 
 Please follow the contribution guidelines when making changes to this repository.
