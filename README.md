@@ -6,16 +6,17 @@ This repository contains the Infrastructure as Code (IaC) for our project, using
 
 infra/
 │── terraform/
-│ ├── main.tf
-│ ├── variables.tf
-│ ├── outputs.tf
+│   ├── main.tf
+│   ├── variables.tf
+│   ├── outputs.tf
 │── k8s/
-│ ├── auth-deployment.yaml
-│ ├── product-deployment.yaml
-│ ├── order-deployment.yaml
-│ ├── api-gateway.yaml
+│   ├── auth-deployment.yaml
+│   ├── product-deployment.yaml
+│   ├── order-deployment.yaml
+│   ├── api-gateway.yaml
 │── .github/workflows/
 │── README.md
+
 
 ## Terraform
 
