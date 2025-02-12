@@ -1,3 +1,44 @@
+## Setting up Azure in local
+## Steps Followed
+
+### Step 1: Install Azure Tools Extension
+1. Open **VS Code**.
+2. Go to the **Extensions Marketplace** (`Ctrl+Shift+X`).
+3. Search for **"Azure Tools"** and install the extension.
+4. The extension includes:
+   - Azure Account
+   - Azure App Service
+   - Azure Functions
+   - Azure Storage
+   - And other Azure-related tools.
+
+---
+
+### Step 2: Sign In to Azure
+1. Open the **Azure Explorer** by clicking the Azure icon in the Activity Bar or pressing `Ctrl+Shift+A`.
+2. Click **Sign in to Azure**.
+3. A browser window will open, prompting you to sign in with your Azure credentials.
+4. After signing in, your Azure subscriptions and resources will appear in the Azure Explorer.
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Infrastructure Repository  
 
 This repository contains the Infrastructure as Code (IaC) for our project, using **Terraform** for resource provisioning and **Kubernetes** for container orchestration.  
