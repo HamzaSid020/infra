@@ -80,3 +80,9 @@ The `.github/workflows/` directory contains CI/CD pipelines for automating infra
 ## Contributing  
 
 Please follow the contribution guidelines when making changes to this repository.
+
+
+
+## Architecture Diagram in Progress:
+![image](https://github.com/user-attachments/assets/44c57686-2ca6-4081-aa01-bf145dad11fb)
+
