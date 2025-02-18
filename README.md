@@ -1,4 +1,5 @@
-## Setting up Azure in local
+# Setting up Azure in Local
+
 ## Steps Followed
 
 ### Step 1: Install Azure Tools Extension
@@ -22,6 +23,48 @@
 
 ---
 
+## Terraform Infrastructure Setup
+The Terraform configuration defines the cloud infrastructure for our project in Azure. The structure includes:
+
+### **📁 File Structure**
+```
+📦 Terraform Project
+├── main.tf       # Defines resource group, VM, and identity
+├── network.tf    # Configures VNet, Subnets, and NSG rules
+├── outputs.tf    # Outputs relevant Terraform-created resources
+```
+
+### **Terraform Commands**
+To initialize, validate, and apply the Terraform configuration, use the following commands:
+
+```bash
+# Initialize Terraform
+terraform init
+
+# Format Terraform files (optional but recommended)
+terraform fmt
+
+# Validate Terraform configuration
+terraform validate
+
+# Show the execution plan
+terraform plan
+
+# Apply the Terraform configuration
+terraform apply -auto-approve
+
+# Destroy resources (if needed)
+terraform destroy -auto-approve
+```
+
+---
+
+## **Next Steps**
+- Install dependencies on the Azure VM using **Ansible**.
+- Configure **Docker, Node.js, Python, and Kubernetes**.
+- Automate deployment of microservices using **Terraform & Kubernetes (AKS)**.
+
+---
 
 
 
@@ -39,7 +82,10 @@
 
 
 
-# Infrastructure Repository  
+
+
+===========================================================================================================
+# Infrastructure Repository Planned
 
 This repository contains the Infrastructure as Code (IaC) for our project, using **Terraform** for resource provisioning and **Kubernetes** for container orchestration.  
 
@@ -109,18 +155,6 @@ The `.github/workflows/` directory contains CI/CD pipelines for automating infra
    kubectl apply -f k8s/
    ```
 
-## Best Practices  
-
-- Use **Terraform modules** to organize and reuse code.  
-- Implement **proper naming conventions and tagging** for resources.  
-- Separate **core infrastructure** from **application-specific** resources.  
-- Use **remote state** (e.g., S3 + DynamoDB for Terraform state locking).  
-- Follow **least privilege access** principles for security.  
-- Use **Git version control** for all infrastructure changes.  
-
-## Contributing  
-
-Please follow the contribution guidelines when making changes to this repository.
 
 
 
