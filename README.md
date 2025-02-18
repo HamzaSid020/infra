@@ -36,26 +36,28 @@ The Terraform configuration defines the cloud infrastructure for our project in 
 
 ### **Terraform Commands**
 To initialize, validate, and apply the Terraform configuration, use the following commands:
+1. Clone this repository:  
+   ```sh
+   git clone <repository-url>
+   cd infra
+   ```
+2. Navigate to the `terraform/` directory:  
+   ```sh
+   cd terraform
+   ```
+3. Initialize Terraform:  
+   ```sh
+   terraform init
+   ```
+4. Plan your changes:  
+   ```sh
+   terraform plan
+   ```
+5. Apply the changes:  
+   ```sh
+   terraform apply
+   ```
 
-```bash
-# Initialize Terraform
-terraform init
-
-# Format Terraform files (optional but recommended)
-terraform fmt
-
-# Validate Terraform configuration
-terraform validate
-
-# Show the execution plan
-terraform plan
-
-# Apply the Terraform configuration
-terraform apply -auto-approve
-
-# Destroy resources (if needed)
-terraform destroy -auto-approve
-```
 
 ---
 
