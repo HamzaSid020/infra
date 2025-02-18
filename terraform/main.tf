@@ -56,14 +56,11 @@ resource "azurerm_linux_virtual_machine" "ubuntu_vm" {
   location            = azurerm_resource_group.maveric.location
   size                = "Standard_B1s" # VM size
   admin_username      = "adminuser"
+  admin_password      = "Ankita12@" # Set the admin password
+  disable_password_authentication = false # Enable password authentication
   network_interface_ids = [
     azurerm_network_interface.vm_nic.id,
   ]
-
-  admin_ssh_key {
-    username   = "adminuser"
-    public_key = file("~/.ssh/id_rsa.pub") # Path to your SSH public key
-  }
 
   os_disk {
     caching              = "ReadWrite"
