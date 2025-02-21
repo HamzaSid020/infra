@@ -1,9 +1,10 @@
 # Azure Local Setup
 
 ## Prerequisites
-- **VS Code** installed
+- **Visual Studio Code (VS Code)** installed
 - **Azure Subscription**
 - **Terraform** installed
+- **Git** installed and configured
 
 ## Step 1: Install Azure Tools Extension
 1. Open **VS Code**.
@@ -16,11 +17,11 @@
    - Azure Storage
    - Other Azure-related tools
 
-## Step 2: Sign In to Azure
-1. Open the **Azure Explorer** (`Ctrl+Shift+A`).
+## Step 2: Authenticate with Azure
+1. Open **Azure Explorer** (`Ctrl+Shift+A`).
 2. Click **Sign in to Azure**.
 3. Authenticate via the browser window.
-4. After signing in, Azure subscriptions and resources appear in the **Azure Explorer**.
+4. Once signed in, Azure subscriptions and resources appear in **Azure Explorer**.
 
 ---
 
@@ -31,11 +32,11 @@ This Terraform configuration provisions Azure resources.
 ```
 📦 Terraform Project
 ├── main.tf       # Defines resource group, VM, and identity
-├── network.tf    # Configures VNet, Subnets, and NSG rules
+├── network.tf    # Configures Virtual Network (VNet), Subnets, and NSG rules
 ├── outputs.tf    # Outputs relevant Terraform-created resources
 ```
 
-### **Terraform Commands**
+### **Terraform Workflow**
 1. Clone the repository:  
    ```sh
    git clone <repository-url>
@@ -49,16 +50,25 @@ This Terraform configuration provisions Azure resources.
    ```sh
    terraform init
    ```
-4. Plan changes:  
+4. Validate configuration:  
+   ```sh
+   terraform validate
+   ```
+5. Plan deployment:  
    ```sh
    terraform plan
    ```
-5. Apply changes:  
+6. Apply configuration:  
    ```sh
    terraform apply -auto-approve
    ```
+7. Verify deployed resources:  
+   ```sh
+   terraform output
+   ```
 
-
+---
+### ✅ Azure environment successfully set up!
 
 
 
@@ -66,3 +76,5 @@ This Terraform configuration provisions Azure resources.
 ## Architecture Diagram in Progress:
 
 ![image](https://github.com/user-attachments/assets/3116346e-6ec6-4c35-bd7e-13033b6bce77)
+
+
