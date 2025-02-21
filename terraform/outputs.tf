@@ -38,3 +38,9 @@ output "vm_admin_username" {
   description = "Admin username for the virtual machine"
   value       = azurerm_linux_virtual_machine.ubuntu_vm.admin_username
 }
+
+# ACR Repository Name Output
+output "acr_repository_name" {
+  description = "Name of the Azure Container Registry (ACR)"
+  value       = azurerm_container_registry.acr.name
+}

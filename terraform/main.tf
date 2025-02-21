@@ -1,13 +1,21 @@
 # Configure the Azure provider
 provider "azurerm" {
   features {}
-
 }
 
 # Create a resource group
 resource "azurerm_resource_group" "maveric" {
   name     = "Maveric"
   location = "East US"
+}
+
+# Create an Azure Container Registry (ACR)
+resource "azurerm_container_registry" "acr" {
+  name                = "mavericacr123" # Must be globally unique
+  resource_group_name = azurerm_resource_group.maveric.name
+  location            = azurerm_resource_group.maveric.location
+  sku                 = "Basic"        # Options: Basic, Standard, Premium
+  admin_enabled       = true           # Enable admin access
 }
 
 # Create a Virtual Network
