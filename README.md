@@ -69,22 +69,7 @@ This Terraform configuration provisions Azure resources.
 
 ---
 ### ✅ Azure environment successfully set up!
-**Architecture Flow**
-The Azure infrastructure is designed to ensure secure, efficient connectivity and management. Below is a high-level view of the architecture:
-Azure Subscription
-│
-├── Resource Group (Maveric)
-│   ├── Virtual Network (maveric-vnet)
-│   │   ├── Public Subnet (public-subnet)
-│   │   └── Bastion Subnet (AzureBastionSubnet)
-│   ├── Container Registry (mavericacr123)
-│   ├── Public IP (vm-public-ip)
-│   ├── Network Interface (vm-nic)
-│   ├── Ubuntu VM (ubuntu-vm)
-│   ├── Bastion Public IP (bastion-public-ip)
-│   ├── Bastion Host (maveric-bastion)
-│   └── Network Security Group (vm-nsg)
-│       └── Allow SSH Rule (Allow-SSH)
+
 
 
 ## Architecture Diagram in Progress:
