@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 terraform.tfstate
 .terraform/
 *.log
 temp/
+=======
+.terraform/
+terraform.tfstate
+terraform.tfstate.backup
+>>>>>>> 4a24eae (Updated Terraform code and added NSG ports for Middleware, Medication Service, Auth Service, Caretaker Service)
