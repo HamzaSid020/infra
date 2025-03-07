@@ -11,7 +11,7 @@
           <mxGeometry x="180" y="150" width="90" height="30" as="geometry" />
         </mxCell>
         <mxCell id="4RFPzDFZCLjAgnLNIc_q-3" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry y="120" width="710" height="470" as="geometry" />
+          <mxGeometry x="10" y="120" width="710" height="470" as="geometry" />
         </mxCell>
         <mxCell id="4RFPzDFZCLjAgnLNIc_q-4" value="&lt;div&gt;Resource Group:&lt;br/&gt;maveric (East US)&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="20" y="150" width="120" height="40" as="geometry" />
@@ -42,11 +42,20 @@
         <mxCell id="4RFPzDFZCLjAgnLNIc_q-10" value="&lt;div&gt;maveric-nsg&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="100" y="480" width="90" height="40" as="geometry" />
         </mxCell>
+        <mxCell id="4RFPzDFZCLjAgnLNIc_q-64" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.881;entryY=-0.028;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.7;exitY=0.818;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="4RFPzDFZCLjAgnLNIc_q-11" target="4RFPzDFZCLjAgnLNIc_q-61">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="470" y="359.9976470588234" as="sourcePoint" />
+            <mxPoint x="421.1700000000001" y="505.67999999999995" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="690" y="420" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
         <mxCell id="4RFPzDFZCLjAgnLNIc_q-11" value="" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=none;fillColor=#00BEF2;shape=mxgraph.azure.virtual_machine;" vertex="1" parent="1">
-          <mxGeometry x="510" y="275" width="100" height="110" as="geometry" />
+          <mxGeometry x="510" y="300" width="100" height="110" as="geometry" />
         </mxCell>
         <mxCell id="4RFPzDFZCLjAgnLNIc_q-12" value="&lt;div&gt;VM: maveric-vm&lt;/div&gt;&lt;div&gt;Public IP: maveric-public-ip (Static)&lt;/div&gt;&lt;div&gt;NIC: maveric-nic&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="465" y="440" width="210" height="60" as="geometry" />
+          <mxGeometry x="440" y="410" width="210" height="60" as="geometry" />
         </mxCell>
         <mxCell id="4RFPzDFZCLjAgnLNIc_q-14" value="" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.acr_cloud_container_registry;" vertex="1" parent="1">
           <mxGeometry x="535.7" y="170" width="48.6" height="56.4" as="geometry" />
@@ -58,7 +67,7 @@
           <mxGeometry x="230" y="667.5" width="135" height="85.05" as="geometry" />
         </mxCell>
         <mxCell id="4RFPzDFZCLjAgnLNIc_q-21" value="&lt;div&gt;Internet&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="190" y="697.52" width="60" height="30" as="geometry" />
+          <mxGeometry x="280" y="695.05" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="4RFPzDFZCLjAgnLNIc_q-26" value="Azure Cloud" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="-180" y="175" width="90" height="30" as="geometry" />
@@ -89,9 +98,6 @@
             <mxPoint x="500" y="345" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="4RFPzDFZCLjAgnLNIc_q-47" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="340" y="510" width="120" height="60" as="geometry" />
-        </mxCell>
         <mxCell id="4RFPzDFZCLjAgnLNIc_q-50" value="" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=none;fillColor=#00BEF2;shape=mxgraph.azure.azure_subscription;" vertex="1" parent="1">
           <mxGeometry x="-160" y="70" width="50" height="35" as="geometry" />
         </mxCell>
@@ -100,6 +106,12 @@
         </mxCell>
         <mxCell id="4RFPzDFZCLjAgnLNIc_q-60" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=-0.003;entryY=0.147;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="4RFPzDFZCLjAgnLNIc_q-26" target="4RFPzDFZCLjAgnLNIc_q-3">
           <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4RFPzDFZCLjAgnLNIc_q-61" value="" style="swimlane;startSize=0;" vertex="1" parent="1">
+          <mxGeometry x="425" y="490" width="200" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="4RFPzDFZCLjAgnLNIc_q-62" value="&lt;div&gt;Docker Containers&lt;/div&gt;&lt;div&gt;- auth (4000)&lt;/div&gt;&lt;div&gt;- caretaker (4004)&lt;/div&gt;&lt;div&gt;- medication (4002)&lt;/div&gt;&lt;div&gt;- middleware (3001)&lt;/div&gt;&lt;div&gt;- frontend (3000)&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="460" y="485" width="130" height="100" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
