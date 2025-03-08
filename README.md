@@ -73,7 +73,5 @@ This Terraform configuration provisions Azure resources.
 
 
 ## Architecture Diagram in Progress:
-
-![image](https://github.com/user-attachments/assets/3116346e-6ec6-4c35-bd7e-13033b6bce77)
-
+https://drive.google.com/file/d/1ixO_umBvcKQp99lOJ1HvMF4Pf6lVZ9Lf/view?usp=sharing
 
