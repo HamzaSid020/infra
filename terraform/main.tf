@@ -207,6 +207,7 @@ resource "azurerm_container_registry" "maveric_acr" {
   admin_enabled       = true
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #remote-exec
 resource "azurerm_linux_virtual_machine" "maveric_vm" {
@@ -241,3 +242,5 @@ resource "azurerm_linux_virtual_machine" "maveric_vm" {
     host        = azurerm_public_ip.maveric_public_ip.ip_address
   }
 >>>>>>> 4a24eae (Updated Terraform code and added NSG ports for Middleware, Medication Service, Auth Service, Caretaker Service)
+=======
+>>>>>>> 1daa129 (Updated Terraform main.tf and added Ansible playbook)
