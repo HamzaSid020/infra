@@ -241,6 +241,4 @@ resource "azurerm_linux_virtual_machine" "maveric_vm" {
     private_key = file(var.private_key_path)
     host        = azurerm_public_ip.maveric_public_ip.ip_address
   }
->>>>>>> 4a24eae (Updated Terraform code and added NSG ports for Middleware, Medication Service, Auth Service, Caretaker Service)
-=======
->>>>>>> 1daa129 (Updated Terraform main.tf and added Ansible playbook)
+
