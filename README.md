@@ -1,53 +1,48 @@
-# Infrastructure Repository  
+# Azure Local Setup
 
-This repository contains the Infrastructure as Code (IaC) for our project, using **Terraform** for resource provisioning and **Kubernetes** for container orchestration.  
+## Prerequisites
+- **Visual Studio Code (VS Code)** installed
+- **Azure Subscription**
+- **Terraform** installed
+- **Git** installed and configured
 
-## Repository Structure  
+## Step 1: Install Azure Tools Extension
+1. Open **VS Code**.
+2. Go to the **Extensions Marketplace** (`Ctrl+Shift+X`).
+3. Search for **"Azure Tools"** and install the extension.
+4. This extension includes:
+   - Azure Account
+   - Azure App Service
+   - Azure Functions
+   - Azure Storage
+   - Other Azure-related tools
 
-```plaintext
-infra/
-│── terraform/
-│   ├── main.tf
-│   ├── variables.tf
-│   ├── outputs.tf
-│── k8s/
-│   ├── auth-deployment.yaml
-│   ├── product-deployment.yaml
-│   ├── order-deployment.yaml
-│   ├── api-gateway.yaml
-│── .github/workflows/
-│── README.md
+## Step 2: Authenticate with Azure
+1. Open **Azure Explorer** (`Ctrl+Shift+A`).
+2. Click **Sign in to Azure**.
+3. Authenticate via the browser window.
+4. Once signed in, Azure subscriptions and resources appear in **Azure Explorer**.
+
+---
+
+## Terraform Infrastructure Setup
+This Terraform configuration provisions Azure resources.
+
+### **📁 Project Structure**
+```
+📦 Terraform Project
+├── main.tf       # Defines resource group, VM, and identity
+├── network.tf    # Configures Virtual Network (VNet), Subnets, and NSG rules
+├── outputs.tf    # Outputs relevant Terraform-created resources
 ```
 
-## Terraform  
-
-The `terraform/` directory contains Terraform configurations for provisioning and managing cloud resources.  
-
-- **`main.tf`** – Main Terraform configuration file  
-- **`variables.tf`** – Input variables for the Terraform modules  
-- **`outputs.tf`** – Output values from the Terraform execution  
-
-## Kubernetes  
-
-The `k8s/` directory contains Kubernetes manifests for deploying our microservices.  
-
-- **`auth-deployment.yaml`** – Authentication service deployment  
-- **`product-deployment.yaml`** – Product service deployment  
-- **`order-deployment.yaml`** – Order service deployment  
-- **`api-gateway.yaml`** – API Gateway configuration  
-
-## GitHub Actions  
-
-The `.github/workflows/` directory contains CI/CD pipelines for automating infrastructure deployments.  
-
-## Usage  
-
-1. Clone this repository:  
+### **Terraform Workflow**
+1. Clone the repository:  
    ```sh
    git clone <repository-url>
    cd infra
    ```
-2. Navigate to the `terraform/` directory:  
+2. Navigate to the Terraform directory:  
    ```sh
    cd terraform
    ```
@@ -55,28 +50,28 @@ The `.github/workflows/` directory contains CI/CD pipelines for automating infra
    ```sh
    terraform init
    ```
-4. Plan your changes:  
+4. Validate configuration:  
+   ```sh
+   terraform validate
+   ```
+5. Plan deployment:  
    ```sh
    terraform plan
    ```
-5. Apply the changes:  
+6. Apply configuration:  
    ```sh
-   terraform apply
+   terraform apply -auto-approve
    ```
-6. Deploy Kubernetes manifests:  
+7. Verify deployed resources:  
    ```sh
-   kubectl apply -f k8s/
+   terraform output
    ```
 
-## Best Practices  
+---
+### ✅ Azure environment successfully set up!
 
-- Use **Terraform modules** to organize and reuse code.  
-- Implement **proper naming conventions and tagging** for resources.  
-- Separate **core infrastructure** from **application-specific** resources.  
-- Use **remote state** (e.g., S3 + DynamoDB for Terraform state locking).  
-- Follow **least privilege access** principles for security.  
-- Use **Git version control** for all infrastructure changes.  
 
-## Contributing  
 
-Please follow the contribution guidelines when making changes to this repository.
+## Architecture Diagram in Progress:
+https://drive.google.com/file/d/1ixO_umBvcKQp99lOJ1HvMF4Pf6lVZ9Lf/view?usp=sharing
+
