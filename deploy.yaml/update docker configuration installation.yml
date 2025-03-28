@@ -54,18 +54,9 @@
         dest: "/usr/local/bin/docker-compose"
         mode: '0755'
 
-    - name: Verify Docker installation
-      command: docker --version
-      register: docker_version
-      changed_when: false
 
     - name: Verify Docker Compose installation
       command: docker-compose --version
       register: docker_compose_version
       changed_when: false
 
-    - name: Display Docker versions
-      debug:
-        msg:
-          - "Docker Version: {{ docker_version.stdout }}"
-          - "Docker Compose Version: {{ docker_compose_version.stdout }}"
