@@ -9,17 +9,17 @@ provider "azurerm" {
 # Variables for SSH key paths
 variable "private_key_path" {
   description = "Path to the SSH private key"
-  default     = "~/.ssh/terraform/terraform_key"  # Path from your earlier commands
+  default     = "~/.ssh/terraform/terraform_key"
 }
 
 variable "public_key_path" {
   description = "Path to the SSH public key"
-  default     = "~/.ssh/terraform/terraform_key.pub"  # Path from your earlier commands
+  default     = "~/.ssh/terraform/terraform_key.pub"
 }
 
 # Resource Group
 resource "azurerm_resource_group" "maveric" {
-  name     = "maveric"
+  name     = "Maverics"
   location = "East US" # Choose a cost-friendly region
 }
 
@@ -44,7 +44,7 @@ resource "azurerm_public_ip" "maveric_public_ip" {
   name                = "maveric-public-ip"
   location            = azurerm_resource_group.maveric.location
   resource_group_name = azurerm_resource_group.maveric.name
-  allocation_method   = "Static" # Required for Standard SKU
+  allocation_method   = "Static"   # Required for Standard SKU
   sku                 = "Standard" # Use Standard SKU
 }
 
@@ -76,7 +76,7 @@ resource "azurerm_network_security_group" "maveric_nsg" {
     protocol                   = "Tcp"
     source_port_range          = "*"
     destination_port_range     = "3000"
-    source_address_prefix      = "*"
+    source_address_prefix      = "*" # Allow all IPs (or specify your IP)
     destination_address_prefix = "*"
   }
 
@@ -89,7 +89,20 @@ resource "azurerm_network_security_group" "maveric_nsg" {
     protocol                   = "Tcp"
     source_port_range          = "*"
     destination_port_range     = "4004"
-    source_address_prefix      = "*"
+    source_address_prefix      = "*" # Allow all IPs (or specify your IP)
+    destination_address_prefix = "*"
+  }
+
+  # Rule for port 4000 (Auth Service)
+  security_rule {
+    name                       = "allow-port-4000"
+    priority                   = 130
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "4000"
+    source_address_prefix      = "*" # Allow all IPs (or specify your IP)
     destination_address_prefix = "*"
   }
 
@@ -106,30 +119,83 @@ resource "azurerm_network_security_group" "maveric_nsg" {
     destination_address_prefix = "*"
   }
 
-  # Rule for port 4006 (Scraper Service)
+  # Rule for port 3001 (Middleware)
   security_rule {
-    name                       = "allow-port-4006"
-    priority                   = 126
+    name                       = "allow-port-3001"
+    priority                   = 140
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "Tcp"
     source_port_range          = "*"
-    destination_port_range     = "4006"
-    source_address_prefix      = "*"
+    destination_port_range     = "3001"
+    source_address_prefix      = "*" # Allow all IPs (or specify your IP)
     destination_address_prefix = "*"
   }
 
-  # Rule for port 4000 (Auth Service)
+  # Rule for port 4002 (Medication Service)
   security_rule {
-    name                       = "allow-port-4000"
-    priority                   = 130
+    name                       = "allow-port-4002"
+    priority                   = 150
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "Tcp"
     source_port_range          = "*"
-    destination_port_range     = "4000"
-    source_address_prefix      = "*"
+    destination_port_range     = "4002"
+    source_address_prefix      = "*" # Allow all IPs (or specify your IP)
     destination_address_prefix = "*"
   }
 }
 
+# Associate NSG with the subnet
+resource "azurerm_subnet_network_security_group_association" "maveric_nsg_assoc" {
+  subnet_id                 = azurerm_subnet.maveric_subnet.id
+  network_security_group_id = azurerm_network_security_group.maveric_nsg.id
+}
+
+# Network Interface
+resource "azurerm_network_interface" "maveric_nic" {
+  name                = "maveric-nic"
+  location            = azurerm_resource_group.maveric.location
+  resource_group_name = azurerm_resource_group.maveric.name
+
+  ip_configuration {
+    name                          = "internal"
+    subnet_id                     = azurerm_subnet.maveric_subnet.id
+    private_ip_address_allocation = "Dynamic"
+    public_ip_address_id          = azurerm_public_ip.maveric_public_ip.id # Associate Public IP
+  }
+}
+
+# Linux Virtual Machine (Ubuntu)
+resource "azurerm_linux_virtual_machine" "maveric_vm" {
+  name                = "maveric-vm"
+  resource_group_name = azurerm_resource_group.maveric.name
+  location            = azurerm_resource_group.maveric.location
+  size                = "Standard_B1s" # Cost-friendly VM size
+  admin_username      = "azureuser"
+  network_interface_ids = [
+    azurerm_network_interface.maveric_nic.id,
+  ]
+
+  admin_ssh_key {
+    username   = "azureuser"
+    public_key = file(var.public_key_path)
+  }
+
+  os_disk {
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+  }
+
+  source_image_reference {
+    publisher = "Canonical"
+    offer     = "UbuntuServer"
+    sku       = "18.04-LTS"
+    version   = "latest"
+  }
+  custom_data = base64encode(templatefile("${path.module}/install.tpl.sh", {
+    jwt_secret     = var.jwt_secret,
+    resend_api     = var.resend_api,
+    firebase_creds = var.firebase_creds
+  }))
+}
