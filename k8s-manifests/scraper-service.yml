@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scraper-service
+  namespace: maveric
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: scraper-service
+  template:
+    metadata:
+      labels:
+        app: scraper-service
+    spec:
+      containers:
+      - name: scraper-service
+        image: mavericacrtest.azurecr.io/scraper-service:latest
+        ports:
+        - containerPort: 4006
+        env:
+          - name: FIREBASE_CREDENTIALS
+            valueFrom:
+              secretKeyRef:
+                name: app-secrets
+                key: FIREBASE_CREDENTIALS
+          - name: CORS_ORIGIN
+            value: http://middleware:3001
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: scraper-service
+  namespace: maveric
+spec:
+  selector:
+    app: scraper-service
+  ports:
+  - port: 4006
+    targetPort: 4006
+  type: ClusterIP
