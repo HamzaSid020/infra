@@ -1,8 +1,11 @@
-# Outputs
-output "vm_public_ip" {
-  value = azurerm_public_ip.maveric_public_ip.ip_address
+output "aks_cluster_name" {
+  value = azurerm_kubernetes_cluster.aks.name
 }
 
 output "acr_login_server" {
-  value = azurerm_container_registry.maveric_acr.login_server
+  value = azurerm_container_registry.acr.login_server
+}
+
+output "resource_group" {
+  value = azurerm_resource_group.rg.name
 }
